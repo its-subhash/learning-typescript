@@ -1,0 +1,15 @@
+{
+  "name": "learning-typescript",
+  "version": "1.0.0",
+  "description": "learning typescript for god knows the reason",
+  "license": "ISC",
+  "author": "Darsh",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "console.log(\"project Starded\")"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.2"
+  }
+}
