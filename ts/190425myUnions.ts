@@ -47,8 +47,14 @@ getDbId (143)
 
 function getIdAdvance(id:number|string){
     id.toUppercase() // this wont work because TS is treating id as a complete new data type that would end up in either num or stirng
-    
+    if (typeof id === "string") {
+        id.toLocaleUpperCase() // now it will work.
+    }
+    else{
+        id +=2 // done.
+    }
 
 }
+
 
 export {}
