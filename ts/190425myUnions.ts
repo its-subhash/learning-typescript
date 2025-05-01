@@ -57,4 +57,15 @@ function getIdAdvance(id:number|string){
 }
 
 
+
+// when you want to restrict values of variable...
+enum SeatChoice {
+    AISLE,
+    MIDDLE,
+    WINDOW,
+    FOUR
+}
+
+const hcseat= SeatChoice.FOUR
+
 export {}
