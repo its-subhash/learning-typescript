@@ -10,19 +10,24 @@ let pi:3.142 = 3.142 // now pi can only be this exact number
 
   // now seatAllotment can have ONLY one of these three values
 
+let seatAllotment : "Lower" | "Middle" | "Upper"
+
+seatAllotment = "Lower" //will work.
+seatAllotment = "Upper" //will work.
+
 seatAllotment ="Darsh" // won't work.
 
-let d:"darsh" = "darsh" // so you can say what value it should be.
+let d:"darsh" = "darsh" // so you can say what value it should be. anything else wont work.
 
 type User = {
     name:string,
     id:number
 }
+
 type Admin = {
     username:string, 
     id: number
 }
-
 
 let Rahul :User | Admin = {
     name:"Rahul",
