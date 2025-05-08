@@ -76,4 +76,26 @@ function anotherFunction <T, U extends dataBase>(valOne:T, valTwo:U):object{
     return {valOne, valTwo}
 }
 
-anotherFunction(5,{connection="darsh@.com", })// pata kar problem kya hai.
+anotherFunction(5,{connection:"D", username:"", passowrd:""})// pata kar problem kya hai.
+
+
+//practicing I Don't know what....
+
+interface Quiz {
+    name:string,
+    type:string
+}
+
+interface Course {
+    name:string,
+    author:string,
+    subject:string
+}
+
+class Sellable<T> {
+    public cart:T[]= []
+
+    addToCart (products:T){
+        this.cart.push(products)
+    }
+}
