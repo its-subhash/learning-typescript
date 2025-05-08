@@ -36,3 +36,13 @@ const aboveFuncitonAsArrowFunction = (arg) => {
     const myIndex = 3;
     return arg[myIndex];
 };
+const Day080525 = (val) => {
+    return val;
+};
+function Day0805252(arg) {
+    return arg;
+}
+function anotherFunction(valOne, valTwo) {
+    return { valOne, valTwo };
+}
+anotherFunction(5, { connection = "darsh@.com", }); // pata kar problem kya hai.

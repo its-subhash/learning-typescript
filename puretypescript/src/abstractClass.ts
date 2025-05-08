@@ -4,7 +4,8 @@
 abstract class TakePhoto {
     constructor (
         public cameraMode:string,
-        public filter:string
+        public filter:string,
+        protected pvc:string,
     ){}
 
     abstract getSome():string
@@ -21,9 +22,10 @@ class Insta extends TakePhoto {
     constructor (
         public cameraMode:string,
         public filter:string,
+        public pvc:string,
         public burst:number //this is additional, while cameraMode and filter has to be added for it to work
     ){
-        super(cameraMode,filter) //super methd to access all the properties of parent class.
+        super(cameraMode,filter,pvc) //super methd to access all the properties of parent class.
     }
     // getSomething(): number { //this method is optional if you want to use it in your child class or not.
     //     return 55

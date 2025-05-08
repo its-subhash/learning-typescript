@@ -55,3 +55,25 @@ const aboveFuncitonAsArrowFunction =<T> (arg:T[]):T => {
     return arg[myIndex]
 }
 
+
+
+const Day080525 =<T>(val:T):T =>{
+    return val
+}
+
+function Day0805252 <T> (arg:T):T{
+    return arg
+}
+
+interface dataBase {
+    connection:string,
+    username:string,
+    passowrd:string
+}
+
+
+function anotherFunction <T, U extends dataBase>(valOne:T, valTwo:U):object{
+    return {valOne, valTwo}
+}
+
+anotherFunction(5,{connection="darsh@.com", })// pata kar problem kya hai.
