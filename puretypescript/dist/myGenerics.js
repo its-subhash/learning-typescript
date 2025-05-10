@@ -45,4 +45,12 @@ function Day0805252(arg) {
 function anotherFunction(valOne, valTwo) {
     return { valOne, valTwo };
 }
-anotherFunction(5, { connection = "darsh@.com", }); // pata kar problem kya hai.
+anotherFunction(5, { connection: "D", username: "", passowrd: "" }); // pata kar problem kya hai.
+class Sellable {
+    constructor() {
+        this.cart = [];
+    }
+    addToCart(products) {
+        this.cart.push(products);
+    }
+}
