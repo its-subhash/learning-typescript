@@ -72,8 +72,8 @@ else {
 //6l. In exercise 5i-5k, we created the 'Remove from cart', '-2', and '-3' buttons. Before updating the quantity, check if it will go below 0:
 // if it will, create a popup saying 'Not enough items in the cart' and don't update the quantity. Otherwise, update the quantity and console.log() it as usual.
 let button = -2; // for componsating the button
-let finalQuantity = cartQuantity + button;
 if (cartQuantity >= 0) {
+    let finalQuantity = cartQuantity + button;
     if (finalQuantity < 0) {
         console.log(`Not enough items in the cart. Current item number: ${cartQuantity}`);
     }
