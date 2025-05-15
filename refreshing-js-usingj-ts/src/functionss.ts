@@ -124,5 +124,6 @@ console.log(convertLengthUpdate2(1, 'biggha', 'miles'));
 
 //7k. Create a copy of the Cart Quantity project form exercise 6i, create a function 'updateCartQuantity' and reuse the code.
 
+
 //7l. Modify 'updateCartQuantity' so that if the quantity is invalid, alert(); and then return;(this is called an early return). An early return make out code cleaner becasuse we can removethe 'else if'/ else.
 
