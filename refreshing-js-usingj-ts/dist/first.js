@@ -1,6 +1,6 @@
 "use strict";
-const rootDiv = document.getElementById("root");
-let firstWord = "Radhe Radhe...";
-rootDiv.innerText = `${firstWord}`;
-console.log(firstWord);
-console.log("Radhe radhe....");
+// const rootDiv = document.getElementById("root")
+// let firstWord:string = "Radhe Radhe..."
+// rootDiv.innerText = `${firstWord}`
+// console.log(firstWord)
+// console.log("Radhe radhe....")
