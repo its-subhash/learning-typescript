@@ -12,6 +12,7 @@
             text-align: center;
             margin: 0;
             padding: 0;
+            transition: background 0.3s, color 0.3s;
         }
         h1 {
             margin-top: 30px;
@@ -44,6 +45,7 @@
             border-radius: 10px;
             box-shadow: 0 2px 8px rgba(44,62,80,0.08);
             padding: 20px;
+            transition: background 0.3s, color 0.3s;
         }
         .scoreboard table {
             width: 100%;
@@ -69,9 +71,57 @@
         .reset-btn:hover {
             background: red;
         }
+        .dark-mode {
+            background: #181c25;
+            color: #f0f8ff;
+        }
+        .dark-mode h1{
+            color: #f0f8ff;
+        }
+        .dark-mode .scoreboard {
+            background: #23293a;
+            color: #f0f8ff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+        }
+        .dark-mode .scoreboard th {
+            background: #2c3446;
+        }
+        .dark-mode button {
+            background: #444e6e;
+            color: #f0f8ff;
+        }
+        .dark-mode button:hover {
+            background: #2c3446;
+        }
+        .dark-mode .reset-btn {
+            background: #b36b00;
+        }
+        .dark-mode .reset-btn:hover {
+            background: #a93226;
+        }
+        .dark-toggle-btn {
+            position: absolute;
+            top: 18px;
+            right: 24px;
+            background: #23293a;
+            color: #f0f8ff;
+            border: none;
+            border-radius: 20px;
+            padding: 8px 18px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .dark-toggle-btn:hover {
+            background: #444e6e;
+        }
+        .dark-mode .dark-toggle-btn{
+            background:#f0f8ff;
+        }
     </style>
 </head>
 <body>
+    <button class="dark-toggle-btn" id="toggle-dark">🌙</button>
     <h1>Coin Flip Game</h1>
     <div class="button-container">
         <button id="btn-head">Head</button>
