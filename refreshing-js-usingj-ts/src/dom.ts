@@ -87,5 +87,30 @@ const mess =(eve,ele,msg )=>{
 //9a to 9f done.
 
 
- 
+ //9g. Create a file 9g.html and copy the code form ... In the amazone shipping calculator, enter a cost of 7.99 and click "calculate". What issue do you see? Fin a fix for this issue.
+
+ //9g. done in exercise-dom.html
+
+ /*
+ 9h. Let's create the project on the right:
+ 1. Whenever we type in the text box, update the text on the page.
+ 2. To do this, we'll learn another event called <input onkeyup="...">.
+ 3. This runs code after we press a key and release it (key comes up.)
+ */
+//9h. done in exercise-dom.html
+
+ /*
+ 9i. We'll imporve the cart quantity project.
+ 1. Make a copy of exercise 7i.
+ 2. Create a paragraph to display the quantity.
+ 3. Whenever we update the quantity, display it on the page insted of in the console. Also, display the quantity when page first loads.
+  */
+
+ /*
+ 9j. We'll improve the calculator project.
+ 1. Make a copy of exercise 8h.
+ 2. Whenever we update the calculation, display it on the page insted of in the console.
+ 3. When the page first loads, if a calculation exists in localStorage, display it on the page.
+ */
+
 
