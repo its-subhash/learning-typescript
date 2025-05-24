@@ -88,7 +88,7 @@
             val = Number(val) + Number(valu);
             setVal();
           } else if (valu < 0) {
-            if (val > valu) {
+            if (val >= Math.abs(valu)) {
               val = Number(val) + Number(valu);
               setVal();
             } else {
