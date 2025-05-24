@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>...</title>
+    <style>
+      #amz-btn {
+        padding: 0.5rem 2.5rem;
+        background: rgb(255, 216, 20);
+        border: none;
+        border-radius: 1rem;
+        cursor: pointer;
+        font-weight: 500;
+      }
+      .uber-request-btn {
+        padding: 0.4rem 1rem;
+        border: none;
+        color: #ffffff;
+        background: #000000;
+        border-radius: 0.3rem;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .uber-schedule-btn {
+        padding: 0.4rem 1rem;
+        color: rgb(0, 0, 0);
+        background: rgb(230, 230, 230);
+        border: none;
+        border-radius: 0.3rem;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      /* #btn-gaming{
+        padding: 0.5rem 1.1rem;
+    color: rgb(0, 0, 0);
+    background: rgb(230, 230, 230);
+    border: none;
+    border-radius: .3rem;
+    font-weight: 600;
+
+} */
+    </style>
+  </head>
+  <body>
+    <!-- 9a and 9b. create amazone button and uber button -->
+    <button id="amz-btn">Add to Cart</button>
+    <button class="uber-request-btn">Request now</button>
+    <button class="uber-schedule-btn">Schedule for later</button>
+    <hr />
+    <button class="js-button">To Check classList.contains</button>
+    <hr />
+    <button class="btn-test uber-request-btn uber-schedule-btn" id="btn-gaming">
+      Gaming
+    </button>
+    <button class="btn-test uber-request-btn uber-schedule-btn" id="btn-music">
+      Music
+    </button>
+    <button class="btn-test uber-request-btn uber-schedule-btn" id="btn-tech">
+      Tech
+    </button>
+
+    <script>
+      //9c. Check if element has class or not
+      const jsButt = document.querySelector(".js-button");
+      console.log(jsButt.classList.contains("js-button"));
+
+
+      //10d, 10e and 10f: just turn buttons in dark mode.
+
+      const gamingButt = document.getElementById("btn-gaming");
+      const musicButt = document.getElementById("btn-music");
+      const techButt = document.getElementById("btn-tech");
+
+      const toggleDark = (ele) => {
+        ele.addEventListener("click", () => {
+          ele.classList.toggle("uber-schedule-btn");
+        });
+      };
+      toggleDark(gamingButt);
+      toggleDark(musicButt);
+      toggleDark(techButt);
+    </script>
+  </body>
+</html>
