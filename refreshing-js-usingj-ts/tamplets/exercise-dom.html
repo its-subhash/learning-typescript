@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DOM Exercise....</title>
-</head>
-<body>
-    <input type="text" id="amazon-calcy">
+  </head>
+  <body>
+    <input type="text" id="amazon-calcy" />
     <button id="amazone-calcy-btn">Calculate</button>
-    <p id = "amaValMess"></p>
-    <hr>
+    <p id="amaValMess"></p>
+    <hr />
 
-    <input type="text" id="onUpKey">
+    <input type="text" id="onUpKey" />
     <p id="onUpKeyMess"></p>
-    <hr>
+    <hr />
 
     <button id="showQuantity">Show Quantity</button>
     <button id="addToCart">Add to Cart</button>
@@ -26,92 +26,136 @@
     <button id="minus3">-3</button>
     <p id="cartMess"></p>
 
-
     <script>
-        const AmaCal= document.getElementById('amazon-calcy')
-        const AmaCalBtn = document.getElementById('amazone-calcy-btn')
-        const amaValMess = document.getElementById('amaValMess')
+      const AmaCal = document.getElementById("amazon-calcy");
+      const AmaCalBtn = document.getElementById("amazone-calcy-btn");
+      const amaValMess = document.getElementById("amaValMess");
 
-        AmaCalBtn.addEventListener('click', ()=>{
-            let inputVal = Number(AmaCal.value)
-            console.log(inputVal)
-            if (inputVal <=50){
-                amaValMess.innerText = `Final Value: ${Math.round(inputVal+10)}`
-            }else{
-                amaValMess.innerText = `Final Value: ${inputVal}`
-            }
-        })
-
-        const onUpKeyInput = document.getElementById('onUpKey')
-        const onUpKeyMess = document.getElementById('onUpKeyMess')
-
-        onUpKeyInput.addEventListener('keyup', ()=>{
-            onUpKeyMess.innerText = `${onUpKeyInput.value}`
-        })
-
-        const showQuantity = document.getElementById("showQuantity")
-        const addToCart= document.getElementById('addToCart')
-        const plus2= document.getElementById('plus2')
-        const plus3 = document.getElementById('plus3')
-        const plus4 = document.getElementById('plus4')
-        const plus5 = document.getElementById('plus5')
-        const removeFromCart = document.getElementById('removeFromCart')
-        const minus2 = document.getElementById('minus2')
-        const minus3 = document.getElementById('minus3')
-        const cartMess = document.getElementById('cartMess')
-        let val = 0
-        const setVal =()=> {
-            localStorage.setItem("val", String(val))
-        cartMess.innerText = `Cart Quantity: ${localStorage.getItem('val')}`
+      AmaCalBtn.addEventListener("click", () => {
+        let inputVal = Number(AmaCal.value);
+        console.log(inputVal);
+        if (inputVal <= 50) {
+          amaValMess.innerText = `Final Value: ${Math.round(inputVal + 10)}`;
+        } else {
+          amaValMess.innerText = `Final Value: ${inputVal}`;
         }
+      });
 
-        addToCart.addEventListener('click', ()=>{
-            val ++
-            setVal()
-        })
-        plus2.addEventListener('click', ()=>{
-            val = val+2
-            setVal()
-        })
-        plus3.addEventListener('click', ()=>{
-            val = val+3
-            setVal()
-        })
-        plus4.addEventListener('click', ()=>{
-            val = val+4
-            setVal()
-        })
-        plus5.addEventListener('click', ()=>{
-            val = val+5
-            setVal()
-        })
-        removeFromCart.addEventListener('click', ()=>{
-            if (val > 0){
-                val = val-1
-                setVal()
-            }else{
-                cartMess.innerText = `Are you an idiot?`
+      const onUpKeyInput = document.getElementById("onUpKey");
+      const onUpKeyMess = document.getElementById("onUpKeyMess");
+
+      onUpKeyInput.addEventListener("keyup", () => {
+        onUpKeyMess.innerText = `${onUpKeyInput.value}`;
+      });
+
+      const showQuantity = document.getElementById("showQuantity");
+      const addToCart = document.getElementById("addToCart");
+      const plus2 = document.getElementById("plus2");
+      const plus3 = document.getElementById("plus3");
+      const plus4 = document.getElementById("plus4");
+      const plus5 = document.getElementById("plus5");
+      const removeFromCart = document.getElementById("removeFromCart");
+      const minus2 = document.getElementById("minus2");
+      const minus3 = document.getElementById("minus3");
+      const cartMess = document.getElementById("cartMess");
+
+      let val = 0;
+
+      try {
+        val = Number(localStorage.getItem("vall")) || 0;
+      } catch (e) {
+        localStorage.setItem("vall", String(val));
+      }
+
+      showQuantity.addEventListener("click", () => {
+        if (showQuantity.innerText === "Show Quantity") {
+          showQuantity.innerText = "Hide Quantity";
+          cartMess.innerText = `Number of Items: ${val}`;
+        } else {
+          showQuantity.innerText = "Show Quantity";
+          cartMess.innerText = ``;
+        }
+      });
+
+      const setVal = () => {
+        cartMess.innerText = `Number of Items: ${val}`;
+        localStorage.setItem("vall", String(val));
+      };
+
+      const takeAction = (elem, action="click", valu, mess = "") => {
+        elem.addEventListener(action, () => {
+          if (valu >= 0) {
+            val = Number(val) + Number(valu);
+            setVal();
+          } else if (valu < 0) {
+            if (val > valu) {
+              val = Number(val) + Number(valu);
+              setVal();
+            } else {
+              cartMess.textContent = "Bhai Chutiya Hai kya??";
             }
-        })
-        
-        minus2.addEventListener('click', ()=>{
-            if (val > 1){
-                val = val-1
-                setVal()
-            }else{
-                cartMess.innerText = `Are you an idiot?`
-            }
-        })
-        
-        minus3.addEventListener('click', ()=>{
-            if (val > 2){
-                val = val-1
-                setVal()
-            }else{
-                cartMess.innerText = `Are you an idiot?`
-            }
-        })
-        
+          }
+          showQuantity.textContent = "Hide Quantity";
+          if (mess != "") {
+            cartMess.textContent = mess;
+          }
+        });
+      };
+
+      // addToCart.addEventListener('click', ()=>{
+      //     val ++
+      //     setVal()
+      // })
+      //   plus2.addEventListener("click", () => {
+      //     val = val + 2;
+      //     setVal();
+      //   });
+      //   plus3.addEventListener("click", () => {
+      //     val = val + 3;
+      //     setVal();
+      //   });
+      //   plus4.addEventListener("click", () => {
+      //     val = val + 4;
+      //     setVal();
+      //   });
+      //   plus5.addEventListener("click", () => {
+      //     val = val + 5;
+      //     setVal();
+      //   });
+      //   removeFromCart.addEventListener("click", () => {
+      //     if (val > 0) {
+      //       val = val - 1;
+      //       setVal();
+      //     } else {
+      //       cartMess.innerText = `Are you an idiot?`;
+      //     }
+      //   });
+
+      //   minus2.addEventListener("click", () => {
+      //     if (val > 1) {
+      //       val = val - 2;
+      //       setVal();
+      //     } else {
+      //       cartMess.innerText = `Are you an idiot?`;
+      //     }
+      //   });
+
+      //   minus3.addEventListener("click", () => {
+      //     if (val > 2) {
+      //       val = val - 3;
+      //       setVal();
+      //     } else {
+      //       cartMess.innerText = `Are you an idiot?`;
+      //     }
+      //   });
+      takeAction(addToCart, "click", 1);
+      takeAction(plus2, "click", 2);
+      takeAction(plus3, 'click', 3);
+      takeAction(plus4, 'click', 4)
+      takeAction(plus5, 'click', 5)
+      takeAction(removeFromCart, 'click',-1)
+      takeAction(minus2, 'click', -2)
+      takeAction(minus3, 'click', -3)
     </script>
-</body>
+  </body>
 </html>
