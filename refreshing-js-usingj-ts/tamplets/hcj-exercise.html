@@ -234,15 +234,17 @@
       const keyDot= document.getElementById('key-.')
       const keyClear= document.getElementById('key-clear')
 
+
       calcyInputElement = document.getElementById('calcy-screen')
-      calcyInputElement.addEventListener('keydown', (event)=>{
+      calcyInputElement.addEventListener('keyup', (event)=>{
         if (event.key == "Enter"){
-          console.log(calcyInputElement.value)
-          if (calcyInputElement.value =""){
-            console.log(calcyInputElement.value)
-            calcyInputElement.value = ""
-          }
           calcyInputElement.value = `${eval(calcyInputElement.value)}`
+        }
+        }
+      );
+      calcyInputElement.addEventListener('keyup', (event)=>{
+        if (event.key == 'c' || event.key == 'C'){
+          calcyInputElement.value = ``
         }
         }
       );
