@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>...</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.6.0/math.min.js"></script>
     <style>
       #amz-btn {
         padding: 0.5rem 2.5rem;
@@ -40,6 +41,57 @@
     font-weight: 600;
 
 } */
+      #btn-amz-cal {
+        padding: 10px 15px;
+        background: rgb(3 175 3);
+        border: none;
+        color: white;
+      }
+      #amz-amount {
+        height: 30px;
+        padding-left: 1rem;
+      }
+      #calcy{
+        background-color: black;
+        width: max-content;
+        padding: 1rem 2rem;
+        border-radius: 1rem;
+      }
+      .input-btn {
+        font-size: 1.5rem;
+        border-radius: 59%;
+        height: 3rem;
+        width: 3rem;
+        background-color: gray;
+        color: white;
+        border: none;
+      }
+      .input-key-row {
+        display: flex;
+        gap: 0.5rem;
+      }
+      #input-keys {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      #key-clear {
+        font-size: 0.8rem;
+      }
+      .operation-btn {
+        background-color: rgb(221, 192, 29);
+      }
+      #calcy-screen {
+        display: flex;
+        height: 3rem;
+        width: 13rem;
+        align-items: center;
+        padding-left: 1rem;
+        font-size: 2rem;
+        color: white;
+        background-color: black;
+        border:none
+      }
     </style>
   </head>
   <body>
@@ -48,7 +100,7 @@
     <button class="uber-request-btn">Request now</button>
     <button class="uber-schedule-btn">Schedule for later</button>
     <hr />
-    <button class="js-button">To Check classList.contains</button>
+    <button class="js-button">To Check</button>
     <hr />
     <button class="btn-test uber-request-btn uber-schedule-btn" id="btn-gaming">
       Gaming
@@ -59,12 +111,64 @@
     <button class="btn-test uber-request-btn uber-schedule-btn" id="btn-tech">
       Tech
     </button>
+    <hr />
+    <p>Skipping this one</p>
+    <button class="btn-test uber-request-btn uber-schedule-btn" id="btn-gaming">
+      Gaming
+    </button>
+    <button class="btn-test uber-request-btn uber-schedule-btn" id="btn-music">
+      Music
+    </button>
+    <button class="btn-test uber-request-btn uber-schedule-btn" id="btn-tech">
+      Tech
+    </button>
+    <hr />
+    <input type="number" id="amz-amount" />
+    <button id="btn-amz-cal">Calculate</button>
+    <p id="error-msg" style="color: red"></p>
+    <hr />
+
+    <div id="calcy">
+      <div id="screen">
+        <input id="calcy-screen">100 + 10</input>
+      </div>
+      <div id="input-keys">
+        <div class="input-key-row" id="input-key-row1">
+          <button class="input-btn" id="key-1">1</button>
+          <button class="input-btn" id="key-2">2</button>
+          <button class="input-btn" id="key-3">3</button>
+          <button class="input-btn operation-btn" id="key-+">+</button>
+        </div>
+        <div class="input-key-row" id="input-key-row2">
+          <button class="input-btn" id="key-4">4</button>
+          <button class="input-btn" id="key-5">5</button>
+          <button class="input-btn" id="key-6">6</button>
+          <button class="input-btn operation-btn" id="key--">-</button>
+        </div>
+        <div class="input-key-row" id="input-key-row3">
+          <button class="input-btn" id="key-7">7</button>
+          <button class="input-btn" id="key-8">8</button>
+          <button class="input-btn" id="key-9">9</button>
+          <button class="input-btn operation-btn" id="key-x">x</button>
+        </div>
+        <div class="input-key-row" id="input-key-row4">
+          <button class="input-btn" id="key-0">0</button>
+          <button class="input-btn" id="key-.">.</button>
+          <button class="input-btn" id="key-=">=</button>
+          <button class="input-btn operation-btn" id="key-/">/</button>
+        </div>
+        <div class="input-key-row" id="input-key-row5">
+          <button class="input-btn input-btn-clear" id="key-clear">
+            Clear
+          </button>
+        </div>
+      </div>
+    </div>
 
     <script>
       //9c. Check if element has class or not
       const jsButt = document.querySelector(".js-button");
       console.log(jsButt.classList.contains("js-button"));
-
 
       //10d, 10e and 10f: just turn buttons in dark mode.
 
@@ -80,6 +184,89 @@
       toggleDark(gamingButt);
       toggleDark(musicButt);
       toggleDark(techButt);
+
+      let amzAmoutInput = document.getElementById("amz-amount");
+      let amzAmountInputBtn = document.getElementById("btn-amz-cal");
+      let amzAmountMess = document.getElementById("error-msg");
+
+      amzAmountInputBtn.addEventListener("click", () => {
+        if (amzAmoutInput.value) {
+          console.log("checkpoint 1");
+          try {
+            let inputNum = Number(amzAmoutInput.value);
+            console.log("checkpoint 2");
+            console.log(typeof inputNum, inputNum);
+            if (inputNum < 0) {
+              amzAmountMess.innerText = "Error: cost cannot be less than $0";
+              console.log("checkpoint 3");
+            } else {
+              console.log("chekpoint 4");
+              amzAmountMess.innerText = "";
+            }
+          } catch (e) {
+            console.log("checkpoint 5");
+            amzAmountMess.innerText = "What the fuck is wrong with you?";
+          }
+        } else {
+          amzAmountMess.innerText = "Put some value...dumb";
+        }
+        console.log("Clicked for god sake");
+      });
+      // -----------------------------------------------------------------------------------
+
+      // Calcy logic
+      //keys
+      const key0= document.getElementById('key-0')
+      const key1= document.getElementById('key-1')
+      const key2= document.getElementById('key-2')
+      const key3= document.getElementById('key-3')
+      const key4= document.getElementById('key-4')
+      const key5= document.getElementById('key-5')
+      const key6= document.getElementById('key-6')
+      const key7= document.getElementById('key-7')
+      const key8= document.getElementById('key-8')
+      const key9= document.getElementById('key-9')
+      const keyEqual= document.getElementById('key-=')
+      const keyPlus= document.getElementById('key-+')
+      const keyMinus= document.getElementById('key--')
+      const keyMulti= document.getElementById('key-x')
+      const keyDiv= document.getElementById('key-/')
+      const keyDot= document.getElementById('key-.')
+      const keyClear= document.getElementById('key-clear')
+
+      calcyInputElement = document.getElementById('calcy-screen')
+      calcyInputElement.addEventListener('keydown', (event)=>{
+        if (event.key == "Enter"){
+          console.log(calcyInputElement.value)
+          if (calcyInputElement.value =""){
+            console.log(calcyInputElement.value)
+            calcyInputElement.value = ""
+          }
+          calcyInputElement.value = `${eval(calcyInputElement.value)}`
+        }
+        }
+      );
+      const btnPress = (val)=>{
+        calcyInputElement.value += val
+      }
+      key0.addEventListener('click', ()=>btnPress(0))
+      key1.addEventListener('click', ()=>btnPress(1))
+      key2.addEventListener('click', ()=>btnPress(2))
+      key3.addEventListener('click', ()=>btnPress(3))
+      key4.addEventListener('click', ()=>btnPress(4))
+      key5.addEventListener('click', ()=>btnPress(5))
+      key6.addEventListener('click', ()=>btnPress(6))
+      key7.addEventListener('click', ()=>btnPress(7))
+      key8.addEventListener('click', ()=>btnPress(8))
+      key9.addEventListener('click', ()=>btnPress(9))
+      keyDot.addEventListener('click', ()=>btnPress('.'))
+      keyPlus.addEventListener('click', ()=>btnPress('+'))
+      keyMinus.addEventListener('click', ()=>btnPress("-"))
+      keyMulti.addEventListener('click', ()=>btnPress('*'))
+      keyDiv.addEventListener('click', ()=>btnPress('/'))
+      keyEqual.addEventListener('click', ()=>calcyInputElement.value = `${eval(calcyInputElement.value)}`)
+      keyClear.addEventListener('click', ()=>calcyInputElement.value = '')
     </script>
+    
   </body>
 </html>
