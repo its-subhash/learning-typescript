@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style></style>
+  </head>
+  <body>
+    <h1>To Do.............</h1>
+    <input type="text" id="toDo1" placeholder="Write To Do..." />
+    <button id="toDo1Btn">Add</button>
+    <script>
+      const toDos = [];
+      toDo1Btn.addEventListener("click", () => {
+        const toDo1Inp = document.getElementById("toDo1");
+        const toDo1Btn = document.getElementById("toDo1Btn");
+        toDos.push(toDo1Inp.value);
+        toDo1Inp.value = "";
+        console.log(toDos);
+      });
+
+    </script>
+  </body>
+</html>
