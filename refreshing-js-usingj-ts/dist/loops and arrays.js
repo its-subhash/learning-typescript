@@ -42,27 +42,27 @@ const todoInput = document.getElementById('todoInput');
 const todoAddBtn = document.getElementById('todoAddBtn')
 const jstodoList = document.getElementById('js-todo-list')
 
-todoList= []
-
-let todoListHtml=''
+const todoList= []
 
 const addtoPage=()=>{
+    let todoListHtml=''
     for(let i=0; i<todoList.length; i++){
         const html = `<p>${todoList[i]}</p>`
         todoListHtml += html;
-        jstodoList.innerHTML= todoListHtml
     }
+    jstodoList.innerHTML= todoListHtml
+    console.log(todoListHtml)
 }
+addtoPage()
 
-console.log(todoListHtml)
 
 todoAddBtn.addEventListener('click', ()=>{
     if(todoInput.value.length>0){
         todoList.push(todoInput.value)
         todoInput.value=''
         console.log(todoList)
-        addtoPage()
     }
+    addtoPage()
     
 })
 todoInput.addEventListener('keyup', (event)=>{
@@ -70,10 +70,8 @@ todoInput.addEventListener('keyup', (event)=>{
         todoList.push(todoInput.value)
         todoInput.value=''
         console.log(todoList)
-        addtoPage()
     }
+    addtoPage()
 })
-
-
 
 
