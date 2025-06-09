@@ -4,21 +4,64 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <style></style>
+    <style>
+      .inputs{
+        height: 2rem;
+        display: flex;
+        gap:0.8rem
+      }
+      .btn {
+        background: transparent;
+        padding-inline: 2rem;
+      }
+      .btn-grn{
+        border: none;
+        background-color: rgb(10, 185, 10);
+        color: white;
+      }
+      .inputsErrs{
+        display: flex;
+        flex-direction: column;
+      }
+      .inputsErrs p{
+        color: red;
+        font-size: 0.8rem;
+      }
+      #toDoInput{
+        height: 2rem;
+      }
+    </style>
   </head>
   <body>
-    <h1>To Do.............</h1>
-    <input type="text" id="toDo1" placeholder="Write To Do..." />
-    <button id="toDo1Btn">Add</button>
+    <h1>ToDo List</h1>
+    <div class="inputs">
+      <div class="inputsErrs">
+        <input
+          type="text"
+          id="toDoInput"
+          placeholder="Write To Do..."/>
+          <p id="errorMess">This is error mess</p>
+      </div>
+      <input type="date" name="dueDate" id="dueDateInput"/>
+      <button id="toDoBtn" class="btn btn-grn">Add</button>
+    </div>
+
+    <div class="toDoList">
+
+    </div>
     <script>
-      const toDos = [];
-      toDo1Btn.addEventListener("click", () => {
-        const toDo1Inp = document.getElementById("toDo1");
-        const toDo1Btn = document.getElementById("toDo1Btn");
-        toDos.push(toDo1Inp.value);
-        toDo1Inp.value = "";
-        console.log(toDos);
-      });
+      const toDoInput= document.getElementById('toDoInput')
+      const dueDateInput= document.getElementById('dueDateInput')
+      const toDobtn = document.getElementById('toDoBtn')
+
+      toDoList = []
+
+      toDobtn.addEventListener('click', ()=>{
+        if (toDoInput.value.length >= 5){
+
+        }
+
+      })
 
     </script>
   </body>
