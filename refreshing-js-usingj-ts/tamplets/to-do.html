@@ -53,12 +53,16 @@
       const toDoInput= document.getElementById('toDoInput')
       const dueDateInput= document.getElementById('dueDateInput')
       const toDobtn = document.getElementById('toDoBtn')
+      const errMsg= document.getElementById ('errorMess')
 
       toDoList = []
 
       toDobtn.addEventListener('click', ()=>{
         if (toDoInput.value.length >= 5){
-
+          errMsg.innerText =''
+        }
+        else{
+          errMsg.innerText = "Should be atleast 5 letters"
         }
 
       })
