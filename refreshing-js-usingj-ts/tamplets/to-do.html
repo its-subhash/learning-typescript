@@ -5,68 +5,134 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-      .inputs{
+      .inputs {
         height: 2rem;
         display: flex;
-        gap:0.8rem
+        gap: 0.8rem;
+        padding-block: 1rem;
       }
       .btn {
         background: transparent;
         padding-inline: 2rem;
-      }
-      .btn-grn{
-        border: none;
-        background-color: rgb(10, 185, 10);
         color: white;
+        border: none;
       }
-      .inputsErrs{
+      .btn-grn {
+        background-color: rgb(10, 185, 10);
+      }
+      .btn-red {
+        background-color: red;
+      }
+      .inputsErrs {
         display: flex;
         flex-direction: column;
       }
-      .inputsErrs p{
+      .inputsErrs p {
         color: red;
         font-size: 0.8rem;
       }
-      #toDoInput{
+      #toDoInput {
         height: 2rem;
+      }
+
+      #toDoList {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        max-width: 70vw;
+      }
+      .toDoItems {
+        display: flex;
+        height: 2rem;
+        /* border:2px solid gray; */
+        justify-content: space-between;
+      }
+      .toDoItems p {
+        align-self: center;
+      }
+      .dateDelete {
+        display: flex;
+        gap: 5rem;
       }
     </style>
   </head>
   <body>
     <h1>ToDo List</h1>
-    <div class="inputs">
-      <div class="inputsErrs">
-        <input
-          type="text"
-          id="toDoInput"
-          placeholder="Write To Do..."/>
-          <p id="errorMess">This is error mess</p>
+    <form>
+      <div class="inputs">
+        <div class="inputsErrs">
+          <input
+            type="text"
+            id="toDoInput"
+            placeholder="Write To Do..."
+            required
+            autofocus
+          />
+          <!-- <p id="errorMess">This is error mess</p> -->
+        </div>
+        <input type="date" name="dueDate" id="dueDateInput" required />
+        <button id="toDoBtn" class="btn btn-grn" type="submit">Add</button>
       </div>
-      <input type="date" name="dueDate" id="dueDateInput"/>
-      <button id="toDoBtn" class="btn btn-grn">Add</button>
-    </div>
+    </form>
 
-    <div class="toDoList">
-
+    <div id="toDoList">
+      <div class="toDoItems">
+        <p>Task</p>
+        <div class="dateDelete">
+          <p>Due Date</p>
+          <p>Action</p>
+        </div>
+      </div>
     </div>
     <script>
-      const toDoInput= document.getElementById('toDoInput')
-      const dueDateInput= document.getElementById('dueDateInput')
-      const toDobtn = document.getElementById('toDoBtn')
-      const errMsg= document.getElementById ('errorMess')
+      const toDoInput = document.getElementById("toDoInput");
+      const dueDateInput = document.getElementById("dueDateInput");
+      const toDobtn = document.getElementById("toDoBtn");
+      const toDoListElement = document.getElementById("toDoList");
+      const delBtn = document.getElementsByTagName("button");
 
-      toDoList = []
+      toDoList = [];
 
-      toDobtn.addEventListener('click', ()=>{
-        if (toDoInput.value.length >= 5){
-          errMsg.innerText =''
+      toDobtn.addEventListener("click", () => {
+        if (toDoInput.value && dueDateInput.value) {
+          addData();
         }
-        else{
-          errMsg.innerText = "Should be atleast 5 letters"
+      });
+
+      toDoInput.addEventListener("keyup", (e) => {
+          if (e.key == "Enter" && toDoInput.value && dueDateInput.value) {
+              addData();
+          }
+      });
+
+      dueDateInput.addEventListener("keyup", (e) => {
+          if (e.key == "Enter" && toDoInput.value && dueDateInput.value) {
+              addData();
+          }
+      });
+      const addData = () => {
+        toDoList.push([toDoInput.value, dueDateInput.value]);
+        renderHTML();
+        toDoInput.value = "";
+        dueDateInput.value = "";
+      };
+      const renderHTML = () => {
+        let toDoStr = `<div class="toDoItems"><p>Task</p>
+            <div class="dateDelete"><p>Due Date</p> <p>Action</p></div></div>`;
+
+        for (let i = 0; i < toDoList.length; i++) {
+          const html = `<div class="toDoItems"><p>${toDoList[i][0]} </p>
+            <div class="dateDelete"><p>${toDoList[i][1]}</p> <button class="btn btn-red" id="del${i}" >Delete</button></div></div>`;
+          toDoStr += html;
         }
+        toDoListElement.innerHTML = toDoStr;
+      };
 
-      })
-
+      const getId= ()=>{
+        delBtn.addEventListener('click', ()=>{
+          console.log(delBtn.id)
+        })
+      }
     </script>
   </body>
 </html>
