@@ -122,7 +122,8 @@
 
         for (let i = 0; i < toDoList.length; i++) {
           const html = `<div class="toDoItems"><p>${toDoList[i][0]} </p>
-            <div class="dateDelete"><p>${toDoList[i][1]}</p> <button class="btn btn-red" id="del${i}" >Delete</button></div></div>`;
+            <div class="dateDelete"><p>${toDoList[i][1]}</p> <button class="btn btn-red" id="del${i}" onclick="toDoList.splice(${i},1); 
+              renderHTML();" >Delete</button></div></div>`;
           toDoStr += html;
         }
         toDoListElement.innerHTML = toDoStr;
