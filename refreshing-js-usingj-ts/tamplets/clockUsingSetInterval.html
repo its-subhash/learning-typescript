@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clock using set interval</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&display=swap" rel="stylesheet">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+         font-family: "Oxanium", sans-serif;
+      }
+      body {
+        background-color: black;
+        background-image: url(/media/compete-logo.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      #clock {
+        margin-left: 50vw;
+        margin-top: 50vh;
+        translate: -50%;
+        width: fit-content;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        font-size: 5rem;
+      }
+      .timeStyle {
+        color: aqua;
+        background-image: none;
+        background-color: transparent;
+      }
+      #timer {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* border: 2px solid aqua; */
+        padding: 2rem 2rem;
+        margin-top: 50vh;
+        translate: -0% -50%;
+      }
+
+      @media (max-width: 375px) {
+        #clock {
+          margin-top: 70vh;
+          font-size: 3rem;
+        }
+        #timer {
+          margin-top: 0vh;
+          translate: -0% -5%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="clock">
+      <div id="timer">
+        <div id="hour" class="timeStyle"><p>00</p></div>
+        <p class="timeStyle">:</p>
+        <div id="minutes" class="timeStyle"><p>00</p></div>
+        <p class="timeStyle">:</p>
+        <div id="seconds" class="timeStyle">00</div>
+      </div>
+    </div>
+    <script>
+      let hour = document.getElementById("hour");
+      let minute = document.getElementById("minutes");
+      let seconds = document.getElementById("seconds");
+
+      const now = new Date();
+      let hourval = now.getHours();
+      let minval = now.getMinutes();
+      let secval = now.getSeconds();
+
+      function renderTime() {
+        if (hourval <= 9) {
+          hour.innerHTML = `<p>0${hourval}</p>`;
+        } else {
+          hour.innerHTML = `<p>${hourval}</p>`;
+        }
+
+        if (minval <= 9) {
+          minute.innerHTML = `<p>0${minval}</p>`;
+        } else {
+          minute.innerHTML = `<p>${minval}</p>`;
+        }
+
+        if (secval <= 9) {
+          seconds.innerHTML = `<p>0${secval}</p>`;
+        } else {
+          seconds.innerHTML = `<p>${secval}</p>`;
+        }
+      }
+
+      /*
+      // for indipendent time
+
+      //for second
+      setInterval(function () {
+        secval++;
+        if (secval >= 60) {
+          secval = 0;
+        }
+        renderTime();
+      }, 1000);
+
+      //for minutes
+      setInterval(function () {
+        minval++;
+        if (minval >= 60) {
+          minval = 0;
+        }
+        renderTime();
+      }, 60000);
+
+      //for hour
+      setInterval(function () {
+        hourval++;
+        if (hourval >= 24) {
+          hourval = 0;
+        }
+        renderTime();
+      }, 600000);
+      */
+
+      //for getting current time
+      setInterval(function () {
+        secval++;
+        if (secval >= 60) {
+          minval++;
+          secval = 0;
+        }
+        if (minval >= 60) {
+          hourval++;
+          minval = 0;
+        }
+        if (hourval >= 24) {
+          hourval = 0;
+        }
+        renderTime();
+      }, 1000);
+    </script>
+  </body>
+</html>

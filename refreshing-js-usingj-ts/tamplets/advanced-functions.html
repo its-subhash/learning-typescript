@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advance functions</title>
+</head>
+<body>
+    <script>
+        // function greetings(){
+        //     alert("Radhe Radhe")
+        // }
+        // // greetings();
+        // const num=2;
+
+        // const func1 = function(){
+        //     console.log("Radhe Radhe")
+        // };
+        // func1()
+
+
+        // const obj1= {
+        //     num:2,
+        //     fuu: ()=>{
+        //         console.log("func inside obj")
+        //     }
+        // }
+
+        // obj1.fuu();
+
+        // function display(param){
+        //     console.log(param)
+        // }
+        // display("Radhe Radhe Radhe....")
+        // display(2)
+
+        // function run(param){ // we can put function as a parameter in function
+        //     param()
+        // }
+        // run(function(){// this function would be called as callback function
+        //     console.log("Radhe Radhe Radhe Radhe...")
+        // })
+
+
+                // Asynchronous Code
+        // won't wait for a line to finish before going to the next line.
+
+ /*       setTimeout(function(){
+            console.log("This would be 5th")
+        },5000);
+
+        setTimeout(function(){
+            console.log("This would be 4th")
+        }, 4000)
+
+        setTimeout(function(){
+            console.log("This would be 3rd")
+        }, 3000)
+
+        setTimeout(function(){
+            console.log("This would be 2nd")
+        }, 2000)
+
+        console.log('This line would log very first...like immideatly.') */
+
+        // using the Asynchronous function....lets short the array.
+        unshortedArray= [2,5,9,4]
+        shortedArray=[]
+
+        for (let i=0; i<unshortedArray.length; i++){
+            setTimeout(function(){
+                shortedArray.push(unshortedArray[i])
+            }, unshortedArray[i]*1000)
+        }
+        console.log(shortedArray)
+
+
+        //setInterval // keep running the function after certen period of time.
+
+        // setInterval(function(){
+        //     console.log("Radhe Radhe...")
+        // },1000)
+
+    </script>
+</body>
+</html>
